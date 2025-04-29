@@ -1,33 +1,34 @@
-import {ADD_REMINDER, REMOVE_REMINDER, CLEAR_REMINDERS} from '../types'
-import { bake_cookie, read_cookie }  from 'sfcookies'
-const reminders = (state=[] , action) => {
-    let reminders = null;
+import { ADD_REMINDER, REMOVE_REMINDER, CLEAR_REMINDERS } from '../types';
+import { bake_cookie, read_cookie } from 'sfcookies';
 
-    state = read_cookie('reminders')
+const reminders = (state = [], action) => {
+  // Load state from cookies
+  const currentState = read_cookie('reminders') || [];
 
-    if(action.type === ADD_REMINDER){
-        reminders = [...state , {text: action.text , date:action.date , id: Math.random()}]
-        bake_cookie('reminders', reminders)
+  let updatedReminders;
 
-        console.log("from reducer ",reminders)
-        return reminders
-    } 
-    else if ( action.type === REMOVE_REMINDER) {
-        reminders = state.filter(reminder => reminder.id !== action.id)
-        bake_cookie('reminders', reminders)
-        console.log("from reducer ",reminders)
-        return reminders
-    }
-    else if ( action.type === CLEAR_REMINDERS) {
-        reminders = []
-        bake_cookie('reminders', reminders)
-        console.log("from reducer ",reminders)
-        return reminders
-    }
-    
-    else {
-        return state
-    }
-}
+  switch (action.type) {
+    case ADD_REMINDER:
+      updatedReminders = [
+        ...currentState,
+        { text: action.text, date: action.date, id: Math.random() }
+      ];
+      break;
 
-export default reminders
+    case REMOVE_REMINDER:
+      updatedReminders = currentState.filter(reminder => reminder.id !== action.id);
+      break;
+
+    case CLEAR_REMINDERS:
+      updatedReminders = [];
+      break;
+
+    default:
+      return currentState;
+  }
+
+  bake_cookie('reminders', updatedReminders);
+  return updatedReminders;
+};
+
+export default reminders;
