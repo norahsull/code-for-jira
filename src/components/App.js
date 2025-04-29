@@ -78,17 +78,6 @@ class App extends Component {
     }
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         clear_Reminder : () => dispatch(clear_Reminder())
-//     }
-// }
-
-// function mapStateToProps(state) {
-//     return {
-//         reminders: state
-//     }
-// }
 
 export default connect(state => {
     return {
