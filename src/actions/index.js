@@ -22,8 +22,8 @@ export const remove_Reminder = (id) => {
         type: REMOVE_REMINDER,
         id
     }
-
-    console.log("Remove", action)
+	
+    console.log("Removed", action)
     return action
 }
 
