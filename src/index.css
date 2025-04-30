@@ -44,6 +44,7 @@ body {
 
 .closeIcon:hover {
     background: #c82333;
+    cursor: pointer;
 }
 
 .react-datepicker-wrapper,
