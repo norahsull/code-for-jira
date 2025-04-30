@@ -77,7 +77,7 @@ class App extends Component {
     }
 }
 
-
+// export app
 export default connect(state => {
     return {
         reminders: state
