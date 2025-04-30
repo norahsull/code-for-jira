@@ -5,6 +5,7 @@
 // 4. Improve logging (e.g., include timestamps or use a logger).
 // 5. Rename functions and variables for consistent camelCase style (e.g., addReminder instead of add_Reminder).
 // 6. tets the flow
+// 7. Complete and Deploy
 import { ADD_REMINDER, REMOVE_REMINDER, CLEAR_REMINDERS } from '../types'
 
 export const add_Reminder = (text, date) => {
